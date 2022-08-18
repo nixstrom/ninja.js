@@ -29,8 +29,13 @@ To run the tests:
 
 2. Make a PR to your forked repo with your changes (make sure you make PR on your forked repo and not on this one - by default github will choose this repo as destination for PR)
 
-3. If you chose to do public repo, send us link to the PR in your forked repo. If you choose to make private repo, add `davidmilo`, `jacobjuul` and `kristiandupont` as collaborators and send us link to it. (We prefer public repos so it can be send internally to other front-enders fro review.)
+3. We really prefer if you make public repo. There are lot of challenges with private repos:
+- you need to invite different people from karnov so they can review your code
+- invitations expire or they easily get lost in mailboxes
+- if we want to share the repo with additional people in the organisation, we have to ask you to do it.
 
+If you chose to do public repo, send us link to the PR in your forked repo.
+If you choose to make private repo, add `davidmilo`, `jacobjuul`, `optiguy`, `ignaciomartinelias`, `JeppeHellerBylov`, `mzedeler` as collaborators and send us link to it.
 
 # Tips
 
