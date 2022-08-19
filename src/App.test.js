@@ -1,6 +1,12 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
+
+const initialProps = {
+  rows: [],
+  locale: 'da',
+  rowsPerPage: 5
+};
 
 const rows = [
   {
@@ -35,20 +41,27 @@ const rows = [
   }
 ];
 
-it('renders without crashing', () => {
-  shallow(<App rows={[]} locale="da" rowsPerPage={5} />);
+const setup = (props = {}) => render(<App {...initialProps} {...props} />);
+
+it('can display an empty table', () => {
+  setup();
+
+  expect(screen.getByRole('table')).toBeInTheDocument();
 });
 
-it('renders 5 rows', () => {
-  const wrapper = mount(<App rows={rows} locale="da" rowsPerPage={5} />);
+it('can display with data', () => {
+  setup({ rows });
 
-  expect(wrapper.find('tr').length).toBe(5);
+  expect(screen.getAllByRole('row').length).toBe(5);
 });
 
-it('filters rows based on input', () => {
-  const wrapper = mount(<App rows={rows} locale="da" rowsPerPage={5} />);
+it('can filter data based on input', () => {
+  setup({ rows });
 
-  wrapper.find('input').simulate('change', { target: { value: 'k' } });
+  const searchInput = screen.getByRole('searchbox');
 
-  expect(wrapper.find('tr').length).toBe(2);
+  fireEvent.change(searchInput, { target: { value: 'k' } });
+
+  expect(screen.getAllByRole('row').length).toBe(2);
 });
+
