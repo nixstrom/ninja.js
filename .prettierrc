@@ -2,6 +2,15 @@
   "singleQuote": true,
   "trailingComma": "none",
   "arrowParens": "always",
-  "endOfLine": "crlf"
+  "endOfLine": "crlf",
+  "printWidth": 160,
+  "overrides": [
+    {
+      "files": "*.jsx",
+      "options": {
+        "semi": false
+      }
+    }
+  ]
 }
 

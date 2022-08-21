@@ -1,6 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { createRoot } from 'react-dom/client';
+import App from './App.js';
 
-var userData = JSON.parse(document.getElementById('user-data').dataset.users);
-ReactDOM.render(<App rows={userData} />, document.getElementById('root'));
+const userData = JSON.parse(document.getElementById('user-data').dataset.users);
+const rootEl = document.getElementById('root');
+const root = createRoot(rootEl);
+root.render(<App rows={userData} />);
+

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Page = (props) => {
   const { pageNumber, currentPageNumber, onChange } = props
@@ -17,17 +18,24 @@ const Page = (props) => {
   }
 
   if (isActivePage()) {
-    return(
+    return (
       <li className="page-item mr-1">
-        <button className="page-link button-outline" onClick={click} >{renderedPageNumber()}</button>
+        <button className="page-link button-outline" onClick={click}>{renderedPageNumber()}</button>
       </li>
     )
   }
-  return(
+  return (
     <li className="page-item mr-1">
-      <button className="page-link" onClick={click} >{renderedPageNumber()}</button>
+      <button className="page-link" onClick={click}>{renderedPageNumber()}</button>
     </li>
   )
 }
 
+Page.propTypes = {
+  pageNumber: PropTypes.number.isRequired,
+  currentPageNumber: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
+}
+
 export default Page
+
