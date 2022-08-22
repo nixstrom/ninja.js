@@ -1,0 +1,16 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "endOfLine": "crlf",
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": "*.jsx",
+      "options": {
+        "semi": false
+      }
+    }
+  ]
+}
+
