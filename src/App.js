@@ -5,7 +5,7 @@ import './App.css';
 
 const App = ({ rows }) => (
   <div className="container mt-3">
-    <DataTable rows={rows} locale="da" rowsPerPage={5} />
+    <DataTable rows={rows} locale="da" />
   </div>
 );
 

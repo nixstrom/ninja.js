@@ -1,26 +1,42 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Page from './Page.jsx'
+import { ITEMS_PER_PAGE } from '../constants.js'
 
-import Page from './Page.jsx';
+const calculateTotalNumberOfPages = (rowsFound) =>
+  ITEMS_PER_PAGE ? Math.ceil(rowsFound / ITEMS_PER_PAGE) : 0
 
-const Pagination = ({ currentPageNumber, totalNumberOfPages, onChange }) => {
-  const pages = Array.from(Array(totalNumberOfPages).keys()).map(
-    (pageNumber) => {
-      return (
-        <Page
-          key={pageNumber}
-          currentPageNumber={currentPageNumber}
-          pageNumber={pageNumber}
-          onChange={onChange}
-        />
-      )
-    }
-  )
+const Pagination = ({ paginationState, totalRowCount }) => {
+  const [currentPageNumber, setCurrentPageNumber] = paginationState
 
-  if (pages.length <= 1) {
+  const pageCount = calculateTotalNumberOfPages(totalRowCount)
+
+  if (pageCount <= 1) {
     return null
   }
-  return <ul className="pagination">{pages}</ul>;
+
+  return (
+    <ul className="pagination">
+      {[...Array(pageCount)].map((_, index) => {
+        return (
+          <Page
+            key={index}
+            currentPageNumber={currentPageNumber}
+            pageNumber={index}
+            onChange={setCurrentPageNumber}
+          />
+        )
+      })}
+    </ul>
+  )
 }
 
-export default Pagination;
+Pagination.propTypes = {
+  // This is a tuple ([number, (number) => void]).
+  // It would trivial to type this with TS, but requires a custom validator for prop-types.
+  paginationState: PropTypes.array.isRequired,
+  totalRowCount: PropTypes.number.isRequired
+}
+
+export default Pagination
 

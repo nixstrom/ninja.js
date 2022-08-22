@@ -1,32 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Page = (props) => {
-  const { pageNumber, currentPageNumber, onChange } = props
+const Page = ({ pageNumber, currentPageNumber, onChange }) => {
+  const className = currentPageNumber === pageNumber ? 'page-link button-outline' : 'page-link'
 
-  const isActivePage = () => {
-    return currentPageNumber == pageNumber
-  }
+  const handleOnClick = () => onChange(pageNumber)
 
-  const renderedPageNumber = () => {
-    return pageNumber + 1
-  }
-
-  const click = (event) => {
-    event.preventDefault()
-    onChange(pageNumber)
-  }
-
-  if (isActivePage()) {
-    return (
-      <li className="page-item mr-1">
-        <button className="page-link button-outline" onClick={click}>{renderedPageNumber()}</button>
-      </li>
-    )
-  }
   return (
     <li className="page-item mr-1">
-      <button className="page-link" onClick={click}>{renderedPageNumber()}</button>
+      <button className={className} onClick={handleOnClick}>
+        {pageNumber + 1}
+      </button>
     </li>
   )
 }

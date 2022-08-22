@@ -3,7 +3,7 @@
   "trailingComma": "none",
   "arrowParens": "always",
   "endOfLine": "crlf",
-  "printWidth": 160,
+  "printWidth": 100,
   "overrides": [
     {
       "files": "*.jsx",
